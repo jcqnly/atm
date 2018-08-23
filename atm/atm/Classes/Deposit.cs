@@ -6,5 +6,6 @@ namespace atm.Classes
 {
 	public class Deposit
 	{
+
 	}
 }

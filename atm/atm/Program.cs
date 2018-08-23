@@ -8,23 +8,28 @@ namespace atm
 		public static void Main(string[] args)
 		{
 			Console.WriteLine("Welcome!");
-			decimal Balance = 5000M;
-			Menu();
+			//balance will be passed as a parameter to the Deposit, Withdraw and View Balance methods
+			decimal balance = 5000M;
+			Menu(balance);
 		}
 
-		public static void Menu()
+		public static void Menu(decimal balance)
 		{
 			Console.WriteLine("Select an option: \n" +
 				"1. Deposit \n" +
 				"2. Withdraw \n" +
 				"3. View Balance \n" +
 				"4. Exit \n");			
-			Selection();
+			Selection(balance);
 		}
 
-		public static void Selection()
+		/// <summary>
+		/// Ask for user input for a deposit and withdraw option
+		/// </summary>
+		/// <param name="balance"></param>
+		public static void Selection(decimal balance)
 		{
-			//need to declare this outside of the try/catch/finally because of scoping
+			//need to declare this int outside of the try/catch/finally because of scoping
 			int choice = 0;
 			try
 			{
@@ -40,9 +45,10 @@ namespace atm
 				switch (choice)
 				{
 					case 1:
+						Console.Clear();
 						Console.WriteLine("How much do you want to deposit?");
 						decimal amount = decimal.Parse(Console.ReadLine());
-						Deposit(amount);
+						Deposit(amount, balance);
 						break;
 					case 2:
 						Console.WriteLine("You chose Withdraw");
@@ -56,23 +62,33 @@ namespace atm
 					default:
 						Console.Clear();
 						Console.WriteLine("You didn't select one of the options");
-						Menu();
+						Menu(balance);
 						break;
 				}
 			}
 		}
 
-		public static void Deposit(decimal amount)
+		/// <summary>
+		/// Adds the deposit amount to the running balance
+		/// Checks to see if deposit amount is negative
+		/// </summary>
+		/// <param name="amount">amount user wants to deposit</param>
+		/// <param name="balance">balance after a deposit</param>
+		public static void Deposit(decimal amount, decimal balance)
 		{
 			Deposit deposit = new Deposit(amount);
 
-			//add to balance
+			//if amount is not negative, add to the balance
 			if (deposit.CheckIfDepositIsNegative(amount))
 			{
-				deposit.AddDepositToBalance(amount);
+				balance = deposit.AddDepositToBalance(amount, balance);
+				Console.WriteLine($"Your balance is {balance}");
 			}
-			Console.WriteLine("You cannot add a negative number");
-			Menu();
+			else //if amount is negative, redirect user back to the menu
+			{
+				Console.WriteLine("You cannot add a negative number");
+			}
+			Menu(balance);
 		}
 	}
 }

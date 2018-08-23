@@ -2,11 +2,22 @@
 
 namespace atm
 {
-	class Program
+	public class Program
 	{
-		static void Main(string[] args)
+		public static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			Console.WriteLine("Welcome!");
+			Menu();
+		}
+
+		public static void Menu()
+		{
+			Console.WriteLine("Select an option: \n" +
+				"1. Deposit" +
+				"2. Withdraw" +
+				"3. View Balance" +
+				"4. Exit");
+
 		}
 	}
 }

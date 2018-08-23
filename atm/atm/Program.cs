@@ -1,4 +1,5 @@
-﻿using System;
+﻿using atm.Classes;
+using System;
 
 namespace atm
 {
@@ -7,6 +8,7 @@ namespace atm
 		public static void Main(string[] args)
 		{
 			Console.WriteLine("Welcome!");
+			decimal Balance = 5000M;
 			Menu();
 		}
 
@@ -38,7 +40,9 @@ namespace atm
 				switch (choice)
 				{
 					case 1:
-						Console.WriteLine("You chose Deposit");
+						Console.WriteLine("How much do you want to deposit?");
+						decimal amount = decimal.Parse(Console.ReadLine());
+						Deposit(amount);
 						break;
 					case 2:
 						Console.WriteLine("You chose Withdraw");
@@ -56,6 +60,11 @@ namespace atm
 						break;
 				}
 			}
+		}
+
+		public static void Deposit(decimal amount)
+		{
+			Deposit deposit = new Deposit(amount);
 		}
 	}
 }

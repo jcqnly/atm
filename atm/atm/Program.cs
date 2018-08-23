@@ -65,6 +65,14 @@ namespace atm
 		public static void Deposit(decimal amount)
 		{
 			Deposit deposit = new Deposit(amount);
+
+			//add to balance
+			if (deposit.CheckIfDepositIsNegative(amount))
+			{
+				deposit.AddDepositToBalance(amount);
+			}
+			Console.WriteLine("You cannot add a negative number");
+			Menu();
 		}
 	}
 }

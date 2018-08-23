@@ -12,5 +12,19 @@ namespace atm.Classes
 		{
 			Amount = amount;
 		}
+
+		public bool CheckIfDepositIsNegative(decimal amount)
+		{
+			if (amount < 0)
+			{
+				return false;
+			}
+			return true;
+		}
+
+		public decimal AddDepositToBalance(decimal amount)
+		{
+
+		}
 	}
 }

@@ -50,10 +50,10 @@ namespace atm
 						decimal amount = decimal.Parse(Console.ReadLine());
 						Deposit(amount, balance);
 						break;
-					case 2:
+					case 2: //TODO
 						Console.WriteLine("You chose Withdraw");
 						break;
-					case 3:
+					case 3: //TODO
 						Console.WriteLine("You chose View Balance");
 						break;
 					case 4:
@@ -90,5 +90,7 @@ namespace atm
 			}
 			Menu(balance);
 		}
+
+
 	}
 }

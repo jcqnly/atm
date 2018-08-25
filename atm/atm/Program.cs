@@ -50,8 +50,11 @@ namespace atm
 						decimal amount = decimal.Parse(Console.ReadLine());
 						Deposit(amount, balance);
 						break;
-					case 2: //TODO
-						Console.WriteLine("You chose Withdraw");
+					case 2:
+						Console.Clear();
+						Console.WriteLine("How much do you want to withdraw?");
+						decimal withdrawAmount = decimal.Parse(Console.ReadLine());
+						Withdraw(withdrawAmount, balance);
 						break;
 					case 3: //TODO
 						Console.WriteLine("You chose View Balance");
@@ -91,6 +94,20 @@ namespace atm
 			Menu(balance);
 		}
 
+		public static void Withdraw(decimal withdrawAmount, decimal balance)
+		{
+			Withdraw withdraw = new Withdraw(withdrawAmount);
 
+			if (withdraw.CheckIfWithdrawIsGreaterThanBalance(withdrawAmount, balance))
+			{
+				balance = withdraw.WithdrawAmount(withdrawAmount, balance);
+				Console.WriteLine($"Your balance is {balance}");
+			}
+			else
+			{
+				Console.WriteLine("You cannot withdraw an amount greater than what you have");
+			}
+			Menu(balance);
+		}
 	}
 }

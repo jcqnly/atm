@@ -96,6 +96,16 @@ namespace atm
 		public static void Withdraw(decimal withdrawAmount, decimal balance)
 		{
 			Withdraw withdraw = new Withdraw(withdrawAmount);
+
+			if (withdraw.CheckIfWithdrawIsGreaterThanBalance(withdrawAmount, balance))
+			{
+				balance = withdraw.WithdrawAmount(withdrawAmount, balance);
+				Console.WriteLine($"Your balance is {balance}");
+			}
+			else
+			{
+				Console.WriteLine("You cannot withdraw an amount greater than what you have");
+			}
 		}
 	}
 }

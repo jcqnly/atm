@@ -13,5 +13,11 @@ namespace atm.Classes
 			Amount = amount;
 		}
 
+		public bool CheckIfWithdrawIsGreaterThanBalance()
+		{
+
+			return true;
+		}
+
 	}
 }

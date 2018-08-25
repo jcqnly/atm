@@ -51,7 +51,9 @@ namespace atm
 						Deposit(amount, balance);
 						break;
 					case 2: //TODO
-						Console.WriteLine("You chose Withdraw");
+						Console.WriteLine("How much do you want to withdraw?");
+						decimal withdrawAmount = decimal.Parse(Console.ReadLine());
+						Withdraw(withdrawAmount, balance);
 						break;
 					case 3: //TODO
 						Console.WriteLine("You chose View Balance");
@@ -91,6 +93,9 @@ namespace atm
 			Menu(balance);
 		}
 
-
+		public static void Withdraw(decimal withdrawAmount, decimal balance)
+		{
+			Withdraw withdraw = new Withdraw(withdrawAmount);
+		}
 	}
 }

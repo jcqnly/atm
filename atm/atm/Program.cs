@@ -56,8 +56,12 @@ namespace atm
 						decimal withdrawAmount = decimal.Parse(Console.ReadLine());
 						Withdraw(withdrawAmount, balance);
 						break;
-					case 3: //TODO
-						Console.WriteLine("You chose View Balance");
+					case 3:
+						Console.Clear();
+						Console.WriteLine($"Your balance is {balance}");
+						Console.ReadLine();
+						Console.Clear();
+						Menu(balance);
 						break;
 					case 4:
 						Environment.Exit(0);

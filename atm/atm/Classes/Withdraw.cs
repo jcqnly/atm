@@ -15,10 +15,8 @@ namespace atm.Classes
 
 		public bool CheckIfWithdrawIsGreaterThanBalance(decimal withdrawAmount, decimal balance)
 		{
-			if (withdrawAmount > balance)
-			{
-				return false;
-			}
+			if (withdrawAmount > balance) return false;
+
 			return true;
 		}
 

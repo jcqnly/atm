@@ -83,18 +83,10 @@ namespace atm
 		/// <param name="balance">balance after a deposit</param>
 		public static void Deposit(decimal amount, decimal balance)
 		{
-			Deposit deposit = new Deposit(amount);
+			Deposit deposit = new Deposit();
 
-			//if amount is not negative, add to the balance
-			if (deposit.CheckIfDepositIsNegative(amount))
-			{
-				balance = deposit.AddDepositToBalance(amount, balance);
-				Console.WriteLine($"Your balance is {balance}");
-			}
-			else //if amount is negative, redirect user back to the menu
-			{
-				Console.WriteLine("You cannot add a negative number");
-			}
+			deposit.CheckIfDepositIsNegative(amount, balance);
+
 			Menu(balance);
 		}
 
